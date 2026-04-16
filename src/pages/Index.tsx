@@ -1,16 +1,44 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import { Background, CustomCursor } from "@/components/Background";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { LaMachine } from "@/components/LaMachine";
+import { NotreEquipe } from "@/components/NotreEquipe";
+import { Processus } from "@/components/Processus";
+import { Specifications } from "@/components/Specifications";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  useEffect(() => {
+    document.title = "SonicLift — Vitesse. Puissance. Élévation.";
+    const meta = document.querySelector('meta[name="description"]');
+    const desc = "SonicLift : pont roulant conçu et fabriqué par des étudiants en robotique. Précision mécanique, électronique embarquée, commande intelligente.";
+    if (meta) meta.setAttribute("content", desc);
+    else {
+      const m = document.createElement("meta");
+      m.name = "description";
+      m.content = desc;
+      document.head.appendChild(m);
+    }
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <>
+      <Background />
+      <CustomCursor />
+      <Navbar />
+      <main>
+        <Hero />
+        <LaMachine />
+        <NotreEquipe />
+        <Processus />
+        <Specifications />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
