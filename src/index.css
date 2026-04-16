@@ -65,6 +65,11 @@
 /* Atmospheric layered background */
 @layer components {
   .bg-atmosphere {
+    /* CSS custom properties driven by Background.tsx rAF loop.
+       Fallback values apply when JS has not yet booted or when
+       prefers-reduced-motion is active. */
+    --rim-rotate: 0deg;
+    --scroll-progress: 0;
     position: fixed;
     inset: 0;
     z-index: -1;
@@ -110,6 +115,55 @@
     bottom: -20%;
     right: -10%;
     @apply animate-drift-2;
+  }
+   /* ============================================================
+     Rim Halo — rotating dual-color ring echoing the SonicLift logo.
+     Cyan glow occupies the top-left quadrant, amber occupies the
+     bottom-right. The mask-image carves a ring shape from the disc
+     so the glow hugs viewport edges instead of filling the center.
+     Rotation is driven entirely by --rim-rotate (set by JS).
+     ============================================================ */
+  .rim-halo {
+    position: absolute;
+    inset: -20%;
+    border-radius: 9999px;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      hsl(var(--primary) / 0.32) 90deg,
+      hsl(var(--primary) / 0.18) 150deg,
+      transparent 200deg,
+      hsl(var(--cyan-accent) / 0.28) 270deg,
+      hsl(var(--cyan-accent) / 0.16) 330deg,
+      transparent 360deg
+    );
+    filter: blur(90px);
+    opacity: 0.35;
+    transform: rotate(var(--rim-rotate));
+    will-change: transform;
+    /* Ring mask: transparent center, visible 58%-72% band, transparent edge.
+       This turns the solid conic disc into a halo ring. */
+    -webkit-mask-image: radial-gradient(
+      circle,
+      transparent 45%,
+      black 58%,
+      black 72%,
+      transparent 90%
+    );
+    mask-image: radial-gradient(
+      circle,
+      transparent 45%,
+      black 58%,
+      black 72%,
+      transparent 90%
+    );
+  }
+
+  /* Mobile tuning: smaller blur, lower opacity, tighter bleed. */
+  .bg-atmosphere.mobile .rim-halo {
+    inset: -10%;
+    filter: blur(60px);
+    opacity: 0.22;
   }
 
   /* Reveal on scroll */
@@ -200,6 +254,13 @@
     box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
   }
   .field::placeholder { color: hsl(var(--steel) / 0.7); }
+   /* Respect user motion preference: freeze the rim halo. */
+  @media (prefers-reduced-motion: reduce) {
+    .rim-halo {
+      transform: rotate(0deg) !important;
+      will-change: auto;
+    }
+  }
 }
 
 /* Custom cursor (desktop) */
