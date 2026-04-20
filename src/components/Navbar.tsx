@@ -60,7 +60,11 @@ export const Navbar = () => {
           className="flex items-center gap-2.5 group"
           aria-label="SonicLift accueil"
         >
-          <CraneMark />
+          <img
+            src="/logo.jpeg"
+            alt="SonicLift"
+            className="w-10 h-10 rounded-full object-cover ring-1 ring-primary/30"
+          />
           <span className="font-display font-extrabold text-xl tracking-tight text-foreground">
             Soni<span className="text-primary">C</span>Lift
           </span>
@@ -118,11 +122,3 @@ export const Navbar = () => {
     </header>
   );
 };
-
-const CraneMark = () => (
-  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-    <path d="M2 4h18M5 4v3M11 4v3M17 4v3M3 7h16v2H3z" stroke="hsl(var(--primary))" strokeWidth="1.4" />
-    <path d="M11 9v6" stroke="hsl(var(--steel))" strokeWidth="1" />
-    <path d="M9 15h4v2H9z" fill="hsl(var(--primary))" />
-  </svg>
-);

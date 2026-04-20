@@ -1,88 +1,154 @@
+import { ArrowRight, FileText } from "lucide-react";
+import { ImageWithFallback } from "./ImageWithFallback";
+
 /**
- * Hero — full viewport, left-aligned content, geometric crane SVG on right.
- * Stagger fade-up on load via tailwind animation + delay style.
+ * ============================================================================
+ * FILE: src/components/Hero.tsx
+ * ============================================================================
+ * PURPOSE:
+ *   Landing hero for SonicLift — Pont Roulant Intelligent (EMINES × Sonasid
+ *   robotics project). Two-column layout on desktop: left column presents the
+ *   project identity, tagline, CTAs, and a metric strip; right column features
+ *   the circular SonicLift logo with an amber glow backdrop.
+ * ============================================================================
+ */
+
+const STATS = [
+  { value: "8 kg", label: "Charge utile" },
+  { value: "32 m/min", label: "Vitesse max" },
+  { value: "1200×800×1000", label: "Espace (mm)" },
+  { value: "4 DDL", label: "Degrés de liberté" },
+];
+
+/**
+ * Hero
+ *
+ * Renders the full-viewport hero section with staggered fade-up animations
+ * on entry. Scroll targets for the CTAs use native anchor behavior with
+ * smooth scroll already enabled globally in index.css.
+ *
+ * INPUTS:  None.
+ * OUTPUTS: JSX.Element — the <section id="apercu"> element.
  */
 export const Hero = () => {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section id="apercu" className="relative min-h-screen flex items-center pt-28 pb-20 px-6">
+    <section
+      id="apercu"
+      className="relative min-h-screen flex items-center pt-28 pb-20 px-6"
+    >
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 text-center lg:text-left">
-          <p className="eyebrow animate-fade-up" style={{ animationDelay: "0ms" }}>
-            Projet Robotique Étudiant — Pont Roulant
+        {/* Left column — identity & messaging */}
+        <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
+          <p
+            className="eyebrow animate-fade-up"
+            style={{ animationDelay: "0ms" }}
+          >
+            UM6P × EMINES × Sonasid — Projet Robotique 2025/2026
           </p>
 
           <h1
             className="mt-6 font-display font-extrabold leading-[0.95] tracking-tight text-foreground animate-fade-up"
             style={{ animationDelay: "150ms", fontSize: "clamp(3rem, 7vw, 6rem)" }}
           >
-            Ingénierie en
-            <br />
-            Mouvement<span className="text-primary">.</span>
+            Soni<span className="text-primary">C</span>Lift
+            <span className="text-primary">.</span>
           </h1>
 
-          <p
-            className="mt-7 text-steel text-lg leading-[1.7] max-w-[520px] mx-auto lg:mx-0 animate-fade-up"
-            style={{ animationDelay: "300ms" }}
+          <h2
+            className="mt-4 font-display font-semibold text-2xl md:text-3xl text-foreground/90 animate-fade-up"
+            style={{ animationDelay: "250ms" }}
           >
-            SonicLift est un pont roulant conçu et fabriqué par des étudiants en
-            robotique, alliant précision mécanique, électronique embarquée et
-            commande intelligente.
+            Pont Roulant Intelligent
+          </h2>
+
+          <p
+            className="mt-7 text-steel text-lg leading-[1.7] max-w-[560px] mx-auto lg:mx-0 animate-fade-up"
+            style={{ animationDelay: "400ms" }}
+          >
+            Prototype à échelle réduite d'un pont roulant autonome pour la
+            métallurgie. Alliant vision stéréoscopique par intelligence
+            artificielle, commande anti-ballant par Input Shaping, et
+            génération de trajectoire temps-réel évitant les obstacles — un
+            cycle de chargement entièrement automatisé dans le respect des
+            normes HSE industrielles.
           </p>
 
+          {/* CTAs */}
           <div
-            className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-up"
-            style={{ animationDelay: "450ms" }}
+            className="mt-9 flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-up"
+            style={{ animationDelay: "550ms" }}
           >
-            <a href="#la-machine" className="btn-amber">Explorer la Machine</a>
-            <a href="#notre-equipe" className="btn-outline-amber">Notre Équipe</a>
+            <button
+              onClick={() => scrollTo("la-machine")}
+              className="btn-amber"
+            >
+              Découvrir la Machine <ArrowRight size={16} />
+            </button>
+            <button
+              onClick={() => scrollTo("specifications")}
+              className="btn-outline-amber"
+            >
+              <FileText size={16} /> Spécifications Techniques
+            </button>
+          </div>
+
+          {/* Stats strip */}
+          <div
+            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 animate-fade-up"
+            style={{ animationDelay: "700ms" }}
+          >
+            {STATS.map((s) => (
+              <div
+                key={s.label}
+                className="glass rounded-xl px-4 py-4 text-center lg:text-left"
+              >
+                <p className="font-display font-extrabold text-primary text-xl md:text-2xl leading-none">
+                  {s.value}
+                </p>
+                <p className="mt-2 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-steel">
+                  {s.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
+        {/* Right column — logo with amber glow */}
         <div
-          className="lg:col-span-5 hidden lg:flex justify-center animate-fade-up"
-          style={{ animationDelay: "600ms" }}
+          className="lg:col-span-5 flex items-center justify-center relative order-1 lg:order-2 animate-fade-up"
+          style={{ animationDelay: "300ms" }}
         >
-          <CraneIllustration />
-        </div>
-      </div>
+          {/* Amber backdrop glow */}
+          <div
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            aria-hidden="true"
+          >
+            <div
+              className="w-[70%] h-[70%] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, hsl(var(--primary) / 0.35), hsl(var(--cyan-accent) / 0.15) 40%, transparent 70%)",
+                filter: "blur(40px)",
+              }}
+            />
+          </div>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-[0.65rem] tracking-[0.3em] text-steel/60 uppercase">
-        Défiler
+          {/* Logo with float animation */}
+          <div className="relative animate-float-y w-full max-w-[420px] mx-auto">
+            <ImageWithFallback
+              src="/logo.jpeg"
+              alt="SonicLift — logo officiel"
+              aspectRatio="1/1"
+              objectFit="contain"
+              className="drop-shadow-[0_0_40px_hsl(var(--primary)/0.4)]"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
 };
-
-const CraneIllustration = () => (
-  <svg
-    viewBox="0 0 400 480"
-    className="w-full max-w-md animate-float-y"
-    aria-hidden="true"
-  >
-    {/* Gantry pillars */}
-    <line x1="40" y1="40" x2="40" y2="440" stroke="hsl(var(--steel))" strokeWidth="3" />
-    <line x1="360" y1="40" x2="360" y2="440" stroke="hsl(var(--steel))" strokeWidth="3" />
-    {/* Base feet */}
-    <line x1="20" y1="440" x2="60" y2="440" stroke="hsl(var(--steel))" strokeWidth="4" />
-    <line x1="340" y1="440" x2="380" y2="440" stroke="hsl(var(--steel))" strokeWidth="4" />
-    {/* I-beam rail (top) */}
-    <rect x="30" y="80" width="340" height="14" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
-    <line x1="30" y1="87" x2="370" y2="87" stroke="hsl(var(--primary)/0.4)" strokeWidth="1" />
-    {/* Trolley */}
-    <rect x="180" y="100" width="60" height="30" fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-    <circle cx="195" cy="100" r="4" fill="hsl(var(--primary))" />
-    <circle cx="225" cy="100" r="4" fill="hsl(var(--primary))" />
-    {/* Cable */}
-    <line x1="210" y1="130" x2="210" y2="320" stroke="hsl(var(--steel))" strokeWidth="1.2" strokeDasharray="2 3" />
-    {/* Hook */}
-    <path d="M210 320 Q200 335 205 350 Q210 365 220 360 Q228 355 222 345" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" />
-    {/* Cross-bracing */}
-    <line x1="40" y1="40" x2="100" y2="80" stroke="hsl(var(--steel)/0.5)" strokeWidth="1" />
-    <line x1="360" y1="40" x2="300" y2="80" stroke="hsl(var(--steel)/0.5)" strokeWidth="1" />
-    {/* Tech labels */}
-    <text x="50" y="30" fill="hsl(var(--steel)/0.6)" fontSize="9" fontFamily="monospace">RAIL — I-BEAM</text>
-    <text x="245" y="118" fill="hsl(var(--steel)/0.6)" fontSize="9" fontFamily="monospace">CHARIOT</text>
-    <text x="230" y="358" fill="hsl(var(--steel)/0.6)" fontSize="9" fontFamily="monospace">CROCHET</text>
-  </svg>
-);
