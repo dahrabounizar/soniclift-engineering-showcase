@@ -35,6 +35,7 @@ export const Footer = () => {
 
           <nav className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-xs uppercase tracking-[0.12em] text-steel/70">
             {NAV.map((n) => (
+              <a
               
                 key={n.id}
                 href={`#${n.id}`}
