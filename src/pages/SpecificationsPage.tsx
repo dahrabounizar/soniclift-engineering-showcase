@@ -44,7 +44,7 @@ const GROUPS: SpecGroup[] = [
     eyebrow: "Motorisation",
     title: "Actionneurs & Transmission",
     rows: [
-      ["Moteurs pas à pas", "5× NEMA 23"],
+      ["Moteurs pas à pas", "5× NEMA 17"],
       ["Drivers de puissance", "DM542 (microstepping configurable)"],
       ["Servomoteur de rotation", "Dynamixel MX-28T"],
       ["Transmission X / Y", "Poulie-courroie GT2, rayon eff. 15 mm"],

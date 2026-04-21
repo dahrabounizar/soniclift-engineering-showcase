@@ -20,7 +20,7 @@ import { ImageWithFallback } from "@/components/ImageWithFallback";
  *   Deep-dive detail page for "Processus". Walks through all 7 engineering
  *   phases from functional analysis (SysML) through trajectory planning (A*),
  *   with corrected technical values per Revue 2 (notably: real V-slot hollow
- *   moment of inertia, 5× NEMA 23 motors, validated anti-sway KPIs).
+ *   moment of inertia, 5× NEMA 17 motors, validated anti-sway KPIs).
  *
  *   Content sourced from Dossier de Définition (pages 6-71) with Revue 2
  *   experimental validation data.
@@ -46,7 +46,7 @@ const SHAPING_KPIS: [string, string, string, string][] = [
 ];
 
 const MOTOR_DIM = [
-  { axis: "X & Y", couple: "≈ 0,19 N·m", details: "Force linéaire 6 N + inertie 12 kg × r² — NEMA 23 largement dimensionné" },
+  { axis: "X & Y", couple: "≈ 0,19 N·m", details: "Force linéaire 6 N + inertie 12 kg × r² — NEMA 17 largement dimensionné" },
   { axis: "Z (levage total)", couple: "2,92 N·m", details: "1,46 N·m par moteur × 2 moteurs, avec rendement η = 0,85" },
   { axis: "Rotation", couple: "≈ 1,67 N·m", details: "Dynamixel MX-28T, ω cible = 6,28 rad/s en 0,5 s" },
 ];
@@ -351,7 +351,7 @@ const ProcessusPage = () => {
               </div>
               <p className="mt-5 text-sm text-steel italic">
                 Note : le dossier initial préconisait NEMA 17 — la Revue 2
-                confirme l'adoption de NEMA 23 (×5) pour la marge de couple
+                confirme l'adoption de NEMA 17 (×5) pour la marge de couple
                 nécessaire sur l'ensemble des axes de translation et de
                 levage, avec drivers DM542.
               </p>
@@ -536,7 +536,7 @@ const ProcessusPage = () => {
           <div className="mt-10 grid md:grid-cols-2 gap-4">
             {[
               { label: "Contrôleur", val: "Arduino Mega 2560" },
-              { label: "Moteurs pas à pas", val: "5× NEMA 23" },
+              { label: "Moteurs pas à pas", val: "5× NEMA 17" },
               { label: "Drivers puissance", val: "5× DM542" },
               { label: "Servo rotation", val: "Dynamixel MX-28T" },
               { label: "Fins de course", val: "7 capteurs (X, Y, Z)" },
@@ -560,7 +560,7 @@ const ProcessusPage = () => {
           <Reveal className="mt-10">
             <ImageWithFallback
               src="/images/processus/circuit-electrique.png"
-              alt="Circuit électrique global avec Arduino Mega, drivers DM542 et moteurs NEMA 23"
+              alt="Circuit électrique global avec Arduino Mega, drivers DM542 et moteurs NEMA 17"
               caption="Figure 13 — Schéma de câblage complet"
               aspectRatio="16/10"
             />

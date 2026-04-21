@@ -37,11 +37,11 @@ const DOF_DETAIL = [
     name: "Translation",
     title: "Déplacement longitudinal du portique",
     course: "1200 mm",
-    drive: "2× Moteur NEMA 23 + poulie-courroie GT2",
+    drive: "2× Moteur NEMA 17 + poulie-courroie GT2",
     description:
       "Le portique complet se déplace sur les rails longitudinaux via deux moteurs synchronisés (marche avant / marche arrière). La configuration bipoutre supporte les contraintes maximales, avec une déflexion maîtrisée à 0,3 mm sous 300 N grâce à la rigidité doublée des deux profilés.",
     components: [
-      "Moteurs NEMA 23 pas à pas (2 unités)",
+      "Moteurs NEMA 17 pas à pas (2 unités)",
       "Drivers DM542 configurables en microstepping",
       "Transmission poulie-courroie GT2",
       "Rayon effectif de poulie : 15 mm",
@@ -55,11 +55,11 @@ const DOF_DETAIL = [
     name: "Direction",
     title: "Déplacement transversal du chariot",
     course: "800 mm",
-    drive: "Moteur NEMA 23 + poulie-courroie",
+    drive: "Moteur NEMA 17 + poulie-courroie",
     description:
       "Le chariot transversal se déplace sur la poutre principale monopoutre (gauche / droite). Configuration poutre simple justifiée par les contraintes mécaniques réduites sur cet axe. La fixation de la courroie est assurée par serrage via une plaque intermédiaire.",
     components: [
-      "Moteur NEMA 23 pas à pas",
+      "Moteur NEMA 17 pas à pas",
       "Driver DM542",
       "Transmission poulie-courroie synchrone",
       "Tendeur de courroie intégré à la glissière",
@@ -72,11 +72,11 @@ const DOF_DETAIL = [
     name: "Levage",
     title: "Mouvement vertical de la charge",
     course: "1000 mm",
-    drive: "2× Moteur NEMA 23 + double tambour à câbles",
+    drive: "2× Moteur NEMA 17 + double tambour à câbles",
     description:
       "La charge est levée par un système à double tambour avec motorisation séparée — solution retenue pour éviter la complexité d'un système poulie-courroie supplémentaire avec tenseur. Chaque tambour est rainuré à ses deux extrémités pour y enrouler les câbles de levage.",
     components: [
-      "2 moteurs NEMA 23 indépendants",
+      "2 moteurs NEMA 17 indépendants",
       "Tambours rainurés aux extrémités",
       "4 câbles acier (coefficient de sécurité 5)",
       "Paliers à brides et à semelle pour le guidage",
@@ -480,7 +480,7 @@ const LaMachinePage = () => {
               Entraînement des Axes X & Y
             </h2>
             <p className="mt-5 text-steel leading-[1.8] max-w-3xl mx-auto">
-              La motorisation des deux axes est assurée par des moteurs NEMA 23
+              La motorisation des deux axes est assurée par des moteurs NEMA 17
               (Revue 2) — originalement prévus en NEMA 17 dans le dossier de
               définition — avec transmission poulie-courroie GT2. La fixation
               du moteur sur le profilé se fait par une plaque en PVC et des
@@ -493,7 +493,7 @@ const LaMachinePage = () => {
             <ImageWithFallback
               src="/images/machine/axe-x-complete.png"
               alt="Montage complet de l'axe X avec moteur, glissière et tendeur"
-              caption="Montage axe X — Moteur NEMA 23 + glissière + tendeur de courroie"
+              caption="Montage axe X — Moteur NEMA 17 + glissière + tendeur de courroie"
               aspectRatio="16/9"
             />
           </Reveal>
