@@ -4,9 +4,9 @@ import { Reveal } from "./Reveal";
 import { toast } from "sonner";
 
 const INFO = [
-  { icon: Mail, label: "Email", value: "contact@soniclift.edu" },
-  { icon: Building2, label: "Institution", value: "[Nom de l'établissement]" },
-  { icon: MapPin, label: "Localisation", value: "Maroc" },
+  { icon: Mail, label: "Email", value: "robotique25_26_pont@um6p.onmicrosoft.com" },
+  { icon: Building2, label: "Institution", value: "Emines - UM6P" },
+  { icon: MapPin, label: "Localisation", value: "Benguerir" },
 ];
 
 export const Contact = () => {

@@ -24,7 +24,7 @@ const GROUPS = [
     icon: Cog,
     eyebrow: "Motorisation",
     title: "Actionneurs & Transmission",
-    highlights: ["5× NEMA 23", "Dynamixel MX-28T", "Drivers DM542"],
+    highlights: ["5× NEMA 17", "Dynamixel MX-28T", "Drivers DM542"],
   },
   {
     icon: Layers,

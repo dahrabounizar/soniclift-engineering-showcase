@@ -18,19 +18,19 @@ const DOF = [
     icon: Move,
     axis: "Translation (X)",
     title: "Déplacement longitudinal",
-    desc: "Course 1200 mm sur rails bipoutre. NEMA 23 + poulie-courroie GT2.",
+    desc: "Course 1200 mm sur rails bipoutre. NEMA 17 + poulie-courroie GT2.",
   },
   {
     icon: MoveHorizontal,
     axis: "Direction (Y)",
     title: "Déplacement transversal",
-    desc: "Course 800 mm du chariot sur poutre principale. NEMA 23 + courroie tendue.",
+    desc: "Course 800 mm du chariot sur poutre principale. NEMA 17 + courroie tendue.",
   },
   {
     icon: ArrowUpDown,
     axis: "Levage (Z)",
     title: "Mouvement vertical",
-    desc: "Course 1000 mm via double tambour. 2× NEMA 23 motorisés indépendamment.",
+    desc: "Course 1000 mm via double tambour. 2× NEMA 17 motorisés indépendamment.",
   },
   {
     icon: RotateCw,
