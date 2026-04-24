@@ -4,47 +4,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SonicLift Design System
+/* SonicLift Design System — Light Theme
    All colors HSL. All tokens centralized.
-   Brand: amber #f59e0b primary, cyan #38bdf8 accent, charcoal #0a0d14 base.
+   Brand: amber #f59e0b primary, cyan #38bdf8 accent, white background.
 */
 
 @layer base {
   :root {
-    /* Base surfaces */
-    --background: 220 31% 6%;            /* #0a0d14 */
-    --foreground: 210 40% 96%;           /* #f1f5f9 */
+    /* Base surfaces — LIGHT THEME */
+    --background: 0 0% 100%;             /* pure white */
+    --foreground: 220 31% 10%;           /* near-black ink */
 
-    --surface: 215 28% 8%;               /* #0d1117 */
-    --card: 220 31% 7%;
-    --card-foreground: 210 40% 96%;
+    --surface: 220 20% 98%;              /* off-white for section contrast */
+    --card: 0 0% 100%;
+    --card-foreground: 220 31% 10%;
 
-    --popover: 220 31% 6%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 31% 10%;
 
-    /* Amber primary */
+    /* Amber primary (unchanged) */
     --primary: 38 92% 50%;               /* #f59e0b */
-    --primary-foreground: 220 31% 6%;
+    --primary-foreground: 0 0% 100%;     /* white text on amber */
     --primary-glow: 32 95% 44%;          /* #d97706 */
 
-    /* Cyan accent */
+    /* Cyan accent (unchanged) */
     --cyan-accent: 199 89% 60%;          /* #38bdf8 */
     --accent: 199 89% 60%;
-    --accent-foreground: 220 31% 6%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Steel neutrals */
-    --secondary: 215 16% 26%;
-    --secondary-foreground: 210 40% 96%;
+    /* Neutrals */
+    --secondary: 215 16% 90%;
+    --secondary-foreground: 220 31% 10%;
 
-    --muted: 215 28% 12%;
-    --muted-foreground: 215 16% 65%;     /* #94a3b8 */
-    --steel: 215 16% 65%;
+    --muted: 215 20% 95%;
+    --muted-foreground: 215 16% 40%;
+    --steel: 215 16% 40%;                /* readable gray on white */
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 28% 18%;
-    --input: 215 28% 14%;
+    --border: 215 20% 88%;
+    --input: 215 20% 94%;
     --ring: 38 92% 50%;
 
     --radius: 0.75rem;
@@ -62,120 +62,76 @@
   ::selection { background: hsl(var(--primary) / 0.35); color: hsl(var(--foreground)); }
 }
 
-/* Atmospheric layered background */
+/* Atmospheric layered background — softened for light theme */
 @layer components {
   .bg-atmosphere {
-    /* CSS custom properties driven by Background.tsx rAF loop.
-       Fallback values apply when JS has not yet booted or when
-       prefers-reduced-motion is active. */
-    --rim-rotate: 0deg;
-    --scroll-progress: 0;
     position: fixed;
     inset: 0;
     z-index: -1;
+    overflow: hidden;
     pointer-events: none;
     background: hsl(var(--background));
-    overflow: hidden;
   }
-  .bg-atmosphere::before {
-    /* Blueprint grid */
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%);
-  }
-  .bg-atmosphere::after {
-    /* Noise grain via SVG */
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
+
   .orb {
     position: absolute;
-    width: 60vw;
-    height: 60vw;
     border-radius: 9999px;
     filter: blur(80px);
     will-change: transform;
   }
   .orb-amber {
-    background: radial-gradient(circle, hsl(var(--primary) / 0.06), transparent 60%);
-    top: -20%;
+    width: 42vw;
+    height: 42vw;
+    top: -10%;
     left: -10%;
-    @apply animate-drift-1;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.18), transparent 70%);
+    animation: drift-1 18s ease-in-out infinite;
+    opacity: 0.9;
   }
   .orb-cyan {
-    background: radial-gradient(circle, hsl(var(--cyan-accent) / 0.04), transparent 60%);
-    bottom: -20%;
+    width: 38vw;
+    height: 38vw;
+    bottom: -10%;
     right: -10%;
-    @apply animate-drift-2;
+    background: radial-gradient(circle, hsl(var(--cyan-accent) / 0.15), transparent 70%);
+    animation: drift-2 24s ease-in-out infinite;
+    opacity: 0.9;
   }
-   /* ============================================================
-     Rim Halo — rotating dual-color ring echoing the SonicLift logo.
-     Cyan glow occupies the top-left quadrant, amber occupies the
-     bottom-right. The mask-image carves a ring shape from the disc
-     so the glow hugs viewport edges instead of filling the center.
-     Rotation is driven entirely by --rim-rotate (set by JS).
-     ============================================================ */
-  /* ============================================================
-     Rim Halo — rotating dual-color ring echoing the SonicLift logo.
-     Values tuned for visible glow against #0a0d14 charcoal base.
-     Cyan glow occupies top-left quadrant, amber occupies bottom-right.
-     Mask carves a ring band so glow hugs viewport edges.
-     ============================================================ */
+
   .rim-halo {
     position: absolute;
     inset: -15%;
     border-radius: 9999px;
     background: conic-gradient(
       from 0deg,
-      transparent 0deg,
-      hsl(var(--primary) / 0.95) 70deg,
-      hsl(var(--primary) / 0.65) 130deg,
-      hsl(var(--primary) / 0.15) 180deg,
-      transparent 210deg,
-      hsl(var(--cyan-accent) / 0.85) 280deg,
-      hsl(var(--cyan-accent) / 0.55) 330deg,
-      transparent 360deg
+      hsl(var(--primary) / 0.08),
+      hsl(var(--cyan-accent) / 0.06),
+      hsl(var(--primary) / 0.08)
     );
-    filter: blur(70px);
-    opacity: 0.9;
-    mix-blend-mode: screen;
-    transform: rotate(var(--rim-rotate));
+    filter: blur(80px);
+    opacity: 0.5;
     will-change: transform;
-    -webkit-mask-image: radial-gradient(
-      circle,
-      transparent 38%,
-      black 52%,
-      black 78%,
-      transparent 95%
-    );
-    mask-image: radial-gradient(
-      circle,
-      transparent 38%,
-      black 52%,
-      black 78%,
-      transparent 95%
-    );
+    animation: rim-rotate 40s linear infinite;
   }
 
-  /* Mobile tuning: smaller blur, slightly reduced intensity, tighter bleed. */
-  .bg-atmosphere.mobile .rim-halo {
-    inset: -8%;
-    filter: blur(50px);
-    opacity: 0.75;
+  @keyframes rim-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
-  /* Mobile tuning: smaller blur, lower opacity, tighter bleed. */
+
   .bg-atmosphere.mobile .rim-halo {
     inset: -10%;
     filter: blur(60px);
-    opacity: 0.22;
+    opacity: 0.25;
+  }
+
+  /* Respect user motion preference: freeze the rim halo. */
+  @media (prefers-reduced-motion: reduce) {
+    .rim-halo,
+    .orb {
+      animation: none !important;
+      will-change: auto;
+    }
   }
 
   /* Reveal on scroll */
@@ -237,23 +193,24 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
   .btn-outline-amber:hover {
-    background: hsl(var(--primary) / 0.15);
+    background: hsl(var(--primary) / 0.1);
     transform: scale(1.03);
     box-shadow: 0 0 24px hsl(var(--primary) / 0.3);
   }
 
-  /* Glass card */
+  /* Glass card — inverted for light theme */
   .glass {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 20px rgba(0, 0, 0, 0.03);
   }
 
-  /* Form fields */
+  /* Form fields — light theme */
   .field {
     width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.12);
     color: hsl(var(--foreground));
     padding: 0.85rem 1rem;
     border-radius: 8px;
@@ -266,16 +223,9 @@
     box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
   }
   .field::placeholder { color: hsl(var(--steel) / 0.7); }
-   /* Respect user motion preference: freeze the rim halo. */
-  @media (prefers-reduced-motion: reduce) {
-    .rim-halo {
-      transform: rotate(0deg) !important;
-      will-change: auto;
-    }
-  }
 }
 
-/* Custom cursor (desktop) */
+/* Custom cursor (desktop) — solid amber, no blend mode for white backgrounds */
 @media (hover: hover) and (pointer: fine) {
   .cursor-dot, .cursor-ring {
     position: fixed;
@@ -285,7 +235,6 @@
     border-radius: 9999px;
     transform: translate(-50%, -50%);
     transition: transform 80ms linear;
-    mix-blend-mode: screen;
   }
   .cursor-dot {
     width: 6px; height: 6px;
@@ -293,7 +242,7 @@
   }
   .cursor-ring {
     width: 28px; height: 28px;
-    border: 1px solid hsl(var(--primary) / 0.4);
-    background: hsl(var(--primary) / 0.05);
+    border: 1px solid hsl(var(--primary) / 0.6);
+    background: hsl(var(--primary) / 0.1);
   }
 }

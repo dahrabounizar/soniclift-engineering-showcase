@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react";
 import { Background, CustomCursor } from "./Background";
-import { DetailNavbar } from "./DetailNavbar";
+import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
 /**
@@ -9,8 +9,9 @@ import { Footer } from "./Footer";
  * ============================================================================
  * PURPOSE:
  *   Reusable wrapper for detail pages (/la-machine, /processus,
- *   /specifications). Provides the atmospheric background, custom cursor,
- *   simplified detail navbar, and footer. Sets the document title.
+ *   /specifications, /notre-equipe). Provides the atmospheric background,
+ *   custom cursor, unified main Navbar (same as the home page), and footer.
+ *   Sets the document title and resets scroll position on mount.
  * ============================================================================
  */
 
@@ -29,7 +30,7 @@ export const DetailPageLayout = ({ title, children }: DetailPageLayoutProps) => 
     <>
       <Background />
       <CustomCursor />
-      <DetailNavbar />
+      <Navbar />
       <main className="pt-24">{children}</main>
       <Footer />
     </>
