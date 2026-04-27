@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Users, Quote } from "lucide-react";
+import { Users } from "lucide-react";
 import { DetailPageLayout } from "@/components/DetailPageLayout";
 import { Reveal } from "@/components/Reveal";
 import { TEAM_MEMBERS } from "@/data/team";
@@ -9,9 +9,9 @@ import { TEAM_MEMBERS } from "@/data/team";
  * FILE: src/pages/NotreEquipePage.tsx
  * ============================================================================
  * PURPOSE:
- *   Dedicated /notre-equipe page. Presents all 14 team members as full cards
- *   including photo placeholder, name, role, and an individual opinion
- *   rendered as an italicized blockquote. Data comes from src/data/team.ts.
+ *   Dedicated /notre-equipe page. Presents all 14 team members as photo
+ *   cards with name and role only — no opinion blockquotes. Data comes
+ *   from src/data/team.ts.
  * ============================================================================
  */
 
@@ -30,7 +30,7 @@ const NotreEquipePage = () => {
               Quatorze étudiants en robotique rassemblés autour d'un projet
               ambitieux — du dimensionnement mécanique à la génération de
               trajectoires A*, chaque discipline est portée par une expertise
-              dédiée. Découvrez ici le témoignage individuel de chaque membre.
+              dédiée.
             </p>
           </Reveal>
         </div>
@@ -39,46 +39,32 @@ const NotreEquipePage = () => {
       {/* Members grid */}
       <section className="section pt-0">
         <div className="max-w-7xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {TEAM_MEMBERS.map((m, i) => (
-              <Reveal key={m.id} delay={(i % 4) * 60}>
-                <article className="glass rounded-2xl p-7 h-full flex flex-col">
-                  {/* Photo + identity */}
-                  <div className="flex flex-col items-center text-center">
-                    {m.photo ? (
-                      <img
-                        src={m.photo}
-                        alt={m.name}
-                        className="w-24 h-24 rounded-full object-cover ring-2 ring-primary/30"
-                      />
-                    ) : (
-                      <div
-                        className="w-24 h-24 rounded-full ring-2 ring-primary/30"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--cyan-accent)))",
-                        }}
-                      />
-                    )}
-                    <h3 className="mt-5 font-display font-bold text-foreground text-lg">
-                      {m.name}
-                    </h3>
-                    <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-primary">
-                      {m.role}
-                    </p>
-                    <div className="mt-4 h-[2px] w-10 bg-primary/40" />
-                  </div>
-
-                  {/* Opinion */}
-                  <blockquote className="mt-6 flex-1 relative pl-6">
-                    <Quote
-                      size={18}
-                      className="text-primary/40 absolute left-0 top-0"
+              <Reveal key={m.id} delay={(i % 5) * 60}>
+                <article className="glass rounded-2xl p-6 h-full flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.3)]">
+                  {m.photo ? (
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      className="w-28 h-28 rounded-full object-cover ring-2 ring-primary/30"
                     />
-                    <p className="italic text-sm text-steel leading-[1.7]">
-                      {m.opinion}
-                    </p>
-                  </blockquote>
+                  ) : (
+                    <div
+                      className="w-28 h-28 rounded-full ring-2 ring-primary/30"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--cyan-accent)))",
+                      }}
+                    />
+                  )}
+                  <h3 className="mt-5 font-display font-bold text-foreground text-lg">
+                    {m.name}
+                  </h3>
+                  <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-primary">
+                    {m.role}
+                  </p>
+                  <div className="mt-4 h-[2px] w-10 bg-primary/40 group-hover:w-14 transition-all duration-300" />
                 </article>
               </Reveal>
             ))}
