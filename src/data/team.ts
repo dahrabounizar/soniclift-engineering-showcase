@@ -82,6 +82,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     photo: "/images/team/hiba_tajri.jpg",
   },
   {
+    id: "aya-nait-yazza",
+    name: "Aya Nait Yazza",
+    role: "AI",
+    photo: "/images/team/aya_nait_yazza.jpg",
+  },
+  {
     id: "sara-gherras",
     name: "Sara Gherras",
     role: "AI",
@@ -98,12 +104,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Iliass Ait Ali Ouiddar",
     role: "AI",
     photo: "/images/team/iliass_ait_ali_ouiddar.jpg",
-  },
-  {
-    id: "aya-nait-yazza",
-    name: "Aya Nait Yazza",
-    role: "AI",
-    photo: "/images/team/aya_nait_yazza.jpg",
   },
  
 ];
