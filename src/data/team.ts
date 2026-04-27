@@ -36,61 +36,19 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "mehdi-sahhar",
     name: "Mehdi Sahhar",
-    role: "Commande",
+    role: "Mécanique",
     photo: "/images/team/mehdi_sahhar.jpg",
-  },
-  {
-    id: "asmae-chabab",
-    name: "Asmae Chabab",
-    role: "Détection",
-    photo: "/images/team/asmae_chabab.jpg",
   },
   {
     id: "nizar-dahrabou",
     name: "Nizar Dahrabou",
-    role: "Dimensionnement",
+    role: "Mécanique",
     photo: "/images/team/nizar_dahrabou.jpg",
   },
-  {
-    id: "khadija-elmrabet",
-    name: "Khadija El Mrabet",
-    role: "Électrique",
-    photo: "/images/team/khadija_elmrabet.jpg",
-  },
-  {
-    id: "sara-gherras",
-    name: "Sara Gherras",
-    role: "Détection",
-    photo: "/images/team/sara_gherras.jpg",
-  },
-  {
-    id: "mohammed-sadiki",
-    name: "Mohammed Sadiki",
-    role: "Dimensionnement",
-    photo: "/images/team/mohammed_sadiki.jpg",
-  },
-  {
-    id: "hiba-tajri",
-    name: "Hiba Tajri",
-    role: "Électrique",
-    photo: "/images/team/hiba_tajri.jpg",
-  },
-  {
-    id: "iliass-ait-ali-ouiddar",
-    name: "Iliass Ait Ali Ouiddar",
-    role: "Commande",
-    photo: "/images/team/iliass_ait_ali_ouiddar.jpg",
-  },
-  {
-    id: "aya-nait-yazza",
-    name: "Aya Nait Yazza",
-    role: "Électrique",
-    photo: "/images/team/aya_nait_yazza.jpg",
-  },
-  {
+   {
     id: "marouane-zemrani",
     name: "Marouane Zemrani",
-    role: "Dimensionnement",
+    role: "Mécanique",
     photo: "/images/team/marouane_zemrani.jpg",
   },
   {
@@ -111,6 +69,43 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Mécanique",
     photo: "/images/team/mohammed_sitel.jpg",
   },
+  {
+    id: "khadija-elmrabet",
+    name: "Khadija El Mrabet",
+    role: "Électrique",
+    photo: "/images/team/khadija_elmrabet.jpg",
+  },
+  {
+    id: "hiba-tajri",
+    name: "Hiba Tajri",
+    role: "Électrique",
+    photo: "/images/team/hiba_tajri.jpg",
+  },
+  {
+    id: "sara-gherras",
+    name: "Sara Gherras",
+    role: "AI",
+    photo: "/images/team/sara_gherras.jpg",
+  },
+  {
+    id: "asmae-chabab",
+    name: "Asmae Chabab",
+    role: "AI",
+    photo: "/images/team/asmae_chabab.jpg",
+  },
+  {
+    id: "iliass-ait-ali-ouiddar",
+    name: "Iliass Ait Ali Ouiddar",
+    role: "AI",
+    photo: "/images/team/iliass_ait_ali_ouiddar.jpg",
+  },
+  {
+    id: "aya-nait-yazza",
+    name: "Aya Nait Yazza",
+    role: "AI",
+    photo: "/images/team/aya_nait_yazza.jpg",
+  },
+ 
 ];
 
 /**
