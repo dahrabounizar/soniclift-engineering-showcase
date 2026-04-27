@@ -7,8 +7,9 @@
  *   list (TEAM_MEMBERS) used on /notre-equipe and a FEATURED_TEAM_MEMBERS
  *   subset used for the condensed home-page preview.
  *
- *   All entries are placeholders. Replace `name`, `role`, `opinion`, and
- *   `photo` values with real data when ready.
+ *   PHOTO PATHS:
+ *   Each photo is expected at: public/images/team/<filename>.jpg
+ *   Filenames are lowercase to be safe on Vercel's case-sensitive Linux build.
  * ============================================================================
  */
 
@@ -23,108 +24,124 @@ export interface TeamMember {
 /**
  * TEAM_MEMBERS
  *
- * The full 14-member team. Roles are distributed across the four project
- * axes (Mécanique, Électrique, IA & Vision, Commande & Trajectoire) plus
- * project management. Opinions are generic placeholders.
+ * The full 14-member team. Each member has a personalized opinion tied to
+ * their specific contribution area (Mécanique, Électrique, Commande,
+ * Dimensionnement, Détection, Chef de projet).
+ *
+ * Photos: place files at public/images/team/<filename>.jpg
  */
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: "member-01",
-    name: "Membre 01",
-    role: "Ingénieur Mécanique",
+    id: "youssra-gaddah",
+    name: "Youssra Gaddah",
+    role: "Mécanique & Chef de Projet",
     opinion:
-      "Ce projet m'a permis d'approfondir la conception de structures mécaniques et de valider mes analyses FEA en conditions réelles. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Coordonner 14 ingénieurs autour d'une vision commune tout en participant à la conception mécanique m'a appris l'équilibre entre vision technique et leadership opérationnel.",
+    photo: "/images/team/youssra_gaddah.jpg",
   },
   {
-    id: "member-02",
-    name: "Membre 02",
-    role: "Ingénieur Mécanique",
+    id: "mehdi-sahhar",
+    name: "Mehdi Sahhar",
+    role: "Commande",
     opinion:
-      "Travailler sur le système de levage double tambour m'a confronté à des problématiques industrielles concrètes. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Travailler sur la commande anti-ballant et voir le contrôleur Input Shaping ZVD réduire θmax de 74 % en validation expérimentale fut le moment fort du projet.",
+    photo: "/images/team/mehdi_sahhar.jpg",
   },
   {
-    id: "member-03",
-    name: "Membre 03",
-    role: "Ingénieur Mécanique",
+    id: "asmae-chabab",
+    name: "Asmae Chabab",
+    role: "Détection",
     opinion:
-      "La fabrication multi-procédés (tour, fraiseuse, CNC, impression 3D) a élargi ma maîtrise des ateliers. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Concevoir un système de détection robuste — fins de course, capteurs inertiels et arrêt d'urgence — m'a sensibilisée à la rigueur des normes industrielles HSE.",
+    photo: "/images/team/asmae_chabab.jpg",
   },
   {
-    id: "member-04",
-    name: "Membre 04",
-    role: "Ingénieur Mécanique",
+    id: "nizar-dahrabou",
+    name: "Nizar Dahrabou",
+    role: "Dimensionnement",
     opinion:
-      "Le dimensionnement rigoureux de l'axe de rotation m'a appris à anticiper les contraintes dynamiques. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Le dimensionnement des arbres, paliers et accouplements a été une école de précision : chaque cote, chaque coefficient de sécurité a son importance.",
+    photo: "/images/team/nizar_dahrabou.jpg",
   },
   {
-    id: "member-05",
-    name: "Membre 05",
-    role: "Ingénieur Électronique",
+    id: "khadija-elmrabet",
+    name: "Khadija El Mrabet",
+    role: "Électrique",
     opinion:
-      "L'intégration de l'Arduino Mega avec cinq drivers DM542 synchrones a été un vrai défi de câblage. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "L'intégration de l'Arduino Mega avec cinq drivers DM542 synchronisés m'a confrontée à la réalité du câblage industriel et de la gestion d'alimentations multiples.",
+    photo: "/images/team/khadija_elmrabet.jpg",
   },
   {
-    id: "member-06",
-    name: "Membre 06",
-    role: "Ingénieur Électronique",
+    id: "sara-gherras",
+    name: "Sara Gherras",
+    role: "Détection",
     opinion:
-      "La gestion des alimentations 12V/5V et des circuits de sécurité m'a sensibilisé aux normes HSE. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "La fusion de données entre accéléromètre et gyroscope pour reconstruire l'angle de ballant en temps réel m'a fascinée par sa finesse algorithmique.",
+    photo: "/images/team/sara_gherras.jpg",
   },
   {
-    id: "member-07",
-    name: "Membre 07",
-    role: "Ingénieur Électronique",
+    id: "mohammed-sadiki",
+    name: "Mohammed Sadiki",
+    role: "Dimensionnement",
     opinion:
-      "Concevoir une architecture modulaire et tolérante aux pannes reste une leçon précieuse. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Valider mes calculs RDM par éléments finis SolidWorks et observer la déflexion réelle de 0,3 mm sous charge fut une satisfaction technique profonde.",
+    photo: "/images/team/mohammed_sadiki.jpg",
   },
   {
-    id: "member-08",
-    name: "Membre 08",
-    role: "Développeur IA / Vision",
+    id: "hiba-tajri",
+    name: "Hiba Tajri",
+    role: "Électrique",
     opinion:
-      "Entraîner un YOLOv5 custom sur notre propre dataset Roboflow et atteindre 99,64 % fut extrêmement satisfaisant. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Concevoir une architecture électrique modulaire et tolérante aux pannes m'a appris que la sécurité d'un système se construit dès le schéma de câblage.",
+    photo: "/images/team/hiba_tajri.jpg",
   },
   {
-    id: "member-09",
-    name: "Membre 09",
-    role: "Développeur IA / Vision",
+    id: "iliass-ait-ali-ouiddar",
+    name: "Iliass Ait Ali Ouiddar",
+    role: "Commande",
     opinion:
-      "La calibration de la stéréovision et la reconstruction 3D m'ont ouvert à la perception robotique. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Implémenter la planification A* 3D avec replanification dynamique en temps réel m'a poussé à optimiser chaque ligne de code pour tenir les contraintes temps réel.",
+    photo: "/images/team/iliass_ait_ali_ouiddar.jpg",
   },
   {
-    id: "member-10",
-    name: "Membre 10",
-    role: "Développeur IA / Vision",
+    id: "aya-nait-yazza",
+    name: "Aya Nait Yazza",
+    role: "Électrique",
     opinion:
-      "L'inférence temps réel à 3,55 ms/image m'a poussé à optimiser chaque étape du pipeline. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Gérer les alimentations 12 V et 5 V avec leurs circuits de sécurité m'a fait comprendre l'importance d'une conception électrique anticipant les pires scénarios.",
+    photo: "/images/team/aya_nait_yazza.jpg",
   },
   {
-    id: "member-11",
-    name: "Membre 11",
-    role: "Ingénieur Commande & Trajectoire",
+    id: "marouane-zemrani",
+    name: "Marouane Zemrani",
+    role: "Dimensionnement",
     opinion:
-      "Valider expérimentalement l'Input Shaping ZVD avec une réduction θmax de 74 % fut un moment fort. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Calculer le couple requis pour le levage à double tambour et le valider expérimentalement reste pour moi l'illustration parfaite du lien entre théorie et pratique.",
+    photo: "/images/team/marouane_zemrani.jpg",
   },
   {
-    id: "member-12",
-    name: "Membre 12",
-    role: "Ingénieur Commande & Trajectoire",
+    id: "aymane-knadel",
+    name: "Aymane Knadel",
+    role: "Mécanique",
     opinion:
-      "Implémenter la planification A* 3D avec replanification dynamique m'a appris la robustesse algorithmique. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "Concevoir le système de levage double tambour plutôt qu'une transmission poulie-courroie m'a appris à défendre un choix technique par les chiffres et l'expérimentation.",
+    photo: "/images/team/aymane_knadel.jpg",
   },
   {
-    id: "member-13",
-    name: "Membre 13",
-    role: "Chef de Projet",
+    id: "rami-iloughmane",
+    name: "Rami Iloughmane",
+    role: "Mécanique",
     opinion:
-      "Coordonner 14 ingénieurs autour d'une vision commune a été la meilleure école de leadership. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "La fabrication multi-procédés — tour, fraiseuse, CNC, impression 3D — a élargi ma maîtrise des ateliers et m'a montré que la conception ne vit que par sa réalisation.",
+    photo: "/images/team/rami_iloughmane.jpg",
   },
   {
-    id: "member-14",
-    name: "Membre 14",
-    role: "Chef de Projet",
+    id: "mohammed-sitel",
+    name: "Mohammed Sitel",
+    role: "Mécanique",
     opinion:
-      "Le dialogue avec Sonasid et EMINES a consolidé ma compréhension des enjeux industriels. Placeholder — à remplacer par l'opinion réelle du membre.",
+      "L'analyse fonctionnelle SysML jusqu'au montage final m'a fait vivre le cycle complet d'un projet d'ingénierie — chaque étape construit la suivante.",
+    photo: "/images/team/mohammed_sitel.jpg",
   },
 ];
 
